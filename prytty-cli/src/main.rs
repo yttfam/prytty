@@ -47,6 +47,11 @@ struct Cli {
     #[arg(short, long, default_value = "dark+")]
     theme: String,
 
+    /// Use syntect engine (200+ languages via Sublime Text grammars).
+    /// Only available when compiled with --features syntect.
+    #[arg(long)]
+    syntect: bool,
+
     /// Allow pre-existing ANSI escape sequences in input to pass through
     /// (by default they are stripped to prevent terminal injection)
     #[arg(long)]
@@ -152,6 +157,26 @@ fn run_batch(cli: &Cli, color_mode: ColorMode) {
     } else {
         input
     };
+
+    // Syntect engine: 200+ languages, heavier binary
+    #[cfg(feature = "syntect")]
+    if cli.syntect {
+        let hl = prytty_core::SyntectHighlighter::new();
+        let ext = cli.language.as_deref()
+            .or_else(|| cli.file.as_ref()
+                .and_then(|p| p.extension())
+                .and_then(|e| e.to_str()));
+        let output = hl.highlight(&input, ext, None, color_mode);
+        let stdout = io::stdout();
+        let mut out = stdout.lock();
+        let _ = out.write_all(output.as_bytes());
+        return;
+    }
+    #[cfg(not(feature = "syntect"))]
+    if cli.syntect {
+        eprintln!("prytty: --syntect requires compilation with --features syntect");
+        std::process::exit(1);
+    }
 
     let tokens = tokenize(lang, &input);
     let writer = AnsiWriter::new(color_mode, Theme::by_name(&cli.theme));

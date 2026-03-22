@@ -6,7 +6,11 @@ edition.workspace = true
 license.workspace = true
 authors.workspace = true
 
+[features]
+syntect = ["dep:syntect"]
+
 [dependencies]
+syntect = { version = "5", default-features = false, features = ["parsing", "regex-fancy", "default-syntaxes", "default-themes", "dump-load"], optional = true }
 
 [dev-dependencies]
 prytty-syntax = { workspace = true }

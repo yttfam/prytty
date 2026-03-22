@@ -10,6 +10,9 @@ authors.workspace = true
 name = "prytty"
 path = "src/main.rs"
 
+[features]
+syntect = ["prytty-core/syntect"]
+
 [dependencies]
 prytty-core = { workspace = true }
 prytty-syntax = { workspace = true }
