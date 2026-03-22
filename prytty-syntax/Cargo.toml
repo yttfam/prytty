@@ -1,0 +1,10 @@
+[package]
+name = "prytty-syntax"
+description = "Regex-based syntax grammars for Prytty"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+prytty-core = { workspace = true }

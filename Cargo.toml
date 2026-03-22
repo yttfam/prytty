@@ -1,0 +1,26 @@
+[workspace]
+resolver = "2"
+members = [
+    "prytty-core",
+    "prytty-syntax",
+    "prytty-formats",
+    "prytty-cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+authors = ["Cali"]
+
+[workspace.dependencies]
+prytty-core = { path = "prytty-core" }
+prytty-syntax = { path = "prytty-syntax" }
+prytty-formats = { path = "prytty-formats" }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
