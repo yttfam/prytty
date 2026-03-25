@@ -2,7 +2,7 @@
 
 Syntax highlighting and pretty-printing for terminal output. 475KB binary, zero heavy dependencies.
 
-Third child of the YTT dynasty ([Hermytt](https://github.com/calibrae/hermytt) | [Crytter](https://github.com/calibrae/crytter) | **Prytty**).
+Third child of the YTT dynasty ([Hermytt](https://github.com/yttfam/hermytt) | [Crytter](https://github.com/yttfam/crytter) | **Prytty**).
 
 ## Install
 

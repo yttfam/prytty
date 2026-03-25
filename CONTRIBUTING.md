@@ -5,7 +5,7 @@ Prytty welcomes contributions. Here's how to get started.
 ## Setup
 
 ```sh
-git clone https://github.com/calibrae/prytty.git
+git clone https://github.com/yttfam/prytty.git
 cd prytty
 cargo build
 cargo test
@@ -39,7 +39,7 @@ Requires Rust 2024 edition (rustc 1.85+).
 
 ## Reporting issues
 
-Open an issue at https://github.com/calibrae/prytty/issues with:
+Open an issue at https://github.com/yttfam/prytty/issues with:
 - What you ran
 - What you expected
 - What happened instead
